@@ -84,16 +84,29 @@ export default {
       this.company = contact[5];
     },
     saveUpdate(){
-      axios.put(`api/contacts/${this.idUpdate}`,{
-        name : this.name,
-        phone : this.phone,
-        group : this.group,
-        email : this.email,
-        company : this.company        
-      })
-      .then( res => console.log(res))
-      .catch( err => console.log(err));
-      location.reload();
+      
+      // Regex for email validation
+      let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+      if(regexEmail.test(this.email)){
+
+          axios.put(`api/contacts/${this.idUpdate}`,{
+          name : this.name,
+          phone : this.phone,
+          group : this.group,
+          email : this.email,
+          company : this.company        
+        })
+        .then( res => console.log(res))
+        .catch( err => console.log(err));
+        location.reload();
+
+      } else {
+
+        alert('Invalid email address');
+
+      }      
+      
     }
   },
   created(){
