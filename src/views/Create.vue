@@ -63,18 +63,31 @@ export default{
   },
   methods : {
     createContact(){
-      axios.post('api/contacts/', {
-        name : this.name,
-        phone : this.phone,
-        group : this.group,
-        email : this.email,
-        company : this.company
-      })
-        .then( res => {
-          console.log(res.data);
-          router.push({path: '/'});
+
+      // Regex for email validation
+      let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+      if(regexEmail.test(this.email)){
+
+          axios.post('api/contacts/', {
+          name : this.name,
+          phone : this.phone,
+          group : this.group,
+          email : this.email,
+          company : this.company
         })
-        .catch( err => console.log(err));
+          .then( res => {
+            console.log(res.data);
+            router.push({path: '/'});
+          })
+          .catch( err => console.log(err));
+
+      } else {
+
+        alert('Invalid email address');
+
+      }
+
     }
   }
 }
