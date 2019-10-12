@@ -2,14 +2,13 @@
    <div class="container">
   <div class="row align-items-center">
     <div class="col"></div>
-    <div class="col">
+    <div class="col-lg-4">
     <b-card
         border-variant="secondary"
         header="Create a new contact"
         header-border-variant="secondary"
         align="center"
     >
-    
       <form>
           <div class="form-group">
             <label for="name">Name</label>
@@ -17,7 +16,7 @@
           </div>
           <div class="form-group">
             <label for="phone">Phone</label>
-            <input type="number" v-model="phone" class="form-control" id="phone" placeholder="Enter the contact phone with the area code" >
+            <input type="number" v-model="phone" class="form-control" id="phone" placeholder="Enter the phone number" >
           </div>
           <div class="form-group">
             <label for="group">Group</label>
@@ -31,16 +30,24 @@
             <label for="company">Company</label>
             <input type="text" v-model="company" class="form-control" id="company" placeholder="Enter the company name" >
           </div>
-            <button type="submit" v-on:click.prevent="createContact" class="btn btn-dark">Create</button>
-            <router-link to="/">
+          <div class="row mx-md-n5">
+            <div class="col px-md-5">
+              <button type="submit" v-on:click.prevent="createContact" class="btn btn-dark">Create</button>
+            </div>
+            <div class="col px-md-5">
+              <router-link to="/">
               <button class="btn btn-info">Cancel</button>
-            </router-link>
+              </router-link>
+            </div>
+          </div>
+            
+
       </form>
     </b-card>
     </div>
     <div class="col"></div>
   </div>
-  
+
   </div>
 </template>
 
